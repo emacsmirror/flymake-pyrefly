@@ -1,11 +1,22 @@
 * flymake-pyrefly
 
-A [[https://pyrefly.org/][Pyrefly]] backend for [[https://www.gnu.org/software/emacs/manual/html_node/flymake/index.html#Top][Flymake]].
+[[https://pyrefly.org/][Pyrefly]] is a fast Python type checker written in Rust.
+flymake-pyrefly is a Pyrefly backend for [[https://www.gnu.org/software/emacs/manual/html_node/flymake/index.html#Top][Flymake]] that helps you to
+see typing errors in your Pyton files.
 
 * How to install
 
+flymake-pyrefly is available on [[https://elpa.nongnu.org/][nonGNU Emacs Lisp Package Archive]],
+so you can install it by ~M-x package-install RET flymake-pyrefly
+RET~.
+
+To add flymake-pyrefly to the list of Flymake backends when editing
+Python files:
+
 #+begin_src elisp
+  ;; with use-package
   (use-package flymake-pyrefly
-    :vc (:url "https://github.com/inpefess/flymake-pyrefly.git")
     :hook (python-mode . pyrefly-setup-flymake-backend))
+  ;; or if you don't use use-package
+  (add-hook 'python-mode-hook #'pyrefly-setup-flymake-backend)
 #+end_src
